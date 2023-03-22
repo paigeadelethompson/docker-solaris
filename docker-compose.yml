@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  default:
+
+services:
+  sol:
+    stdin_open: true
+    tty: true
+    restart: on-failure:1
+    hostname: aux
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: qemu-sparc:latest
+    environment:
+      GRAPHICS: none
+      MACHINE_TYPE: SS-10
+      SMP: 2
+      BOOT: c
+      CD_IMAGE: /qemu/iso/solaris-2.6.iso
+      SOCKET_NET: listen=0.0.0.0:65534
+      VNC_HOST: 0.0.0.0:0
+      LANG: en_US.utf8
+      TZ: UTC
+      MAC: "de:ad:de:01:02:03"
+    ulimits:
+      nproc: 10240
+      nofile:
+        soft: 10240
+        hard: 10240
+    networks:
+      default:
+    volumes:
+      - disk:/qemu/disk
+      - iso:/qemu/iso
+
+volumes:
+  disk:
+  iso:
