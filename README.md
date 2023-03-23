@@ -486,6 +486,17 @@ Hub 0 (user0):
 
 - then you would just telnet to `100.64.96.34` if that were the IP address of the container itself.
 
+### Networking with other Solaris containers
+If you haven't figured this out the volumes can be copied and you can create as many containers as you want. The first container 
+that you create bootstraps the user network, and additional containers you just need to change the env for the compose to match
+something like this: 
+
+```
+SOCKET_NET: connect=100.64.96.34:65534
+MAC: "de:ad:de:01:02:04"
+
+```
+
 # Problems
 
 - Running on a Mac M1 at the moment doesn't work
