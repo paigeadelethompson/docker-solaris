@@ -494,7 +494,6 @@ something like this:
 ```
 SOCKET_NET: connect=100.64.96.34:65534
 MAC: "de:ad:de:01:02:04"
-
 ```
 
 # Problems
