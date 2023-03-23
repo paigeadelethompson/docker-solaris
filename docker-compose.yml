@@ -15,8 +15,8 @@ services:
     image: qemu-sparc:latest
     environment:
       GRAPHICS: none
-      MACHINE_TYPE: SS-10
-      SMP: 2
+      MACHINE_TYPE: SS-5
+      SMP: 1
       BOOT: c
       CD_IMAGE: /qemu/iso/solaris-2.6.iso
       SOCKET_NET: listen=0.0.0.0:65534
