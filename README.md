@@ -466,6 +466,26 @@ add net default: gateway 10.0.0.1
 4.2.2.1 is alive
 ```
 
+## Networking
+In addition to forwarding ports with docker/compose, however you do, (most people probably use the ports section though for me it's a little different) you also need to configure a port forward
+for the QEMU user net: 
+
+```
+(qemu) help hostfwd_add
+hostfwd_add [netdev_id] [tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport -- redirect TCP or UDP connections from host to guest (requires -net user)
+(qemu) info usernet
+Hub 0 (user0):
+  Protocol[State]    FD  Source Address  Port   Dest. Address  Port RecvQ SendQ
+(qemu) hostfwd_add user0 tcp:100.64.96.34:23-10.0.0.2:23
+(qemu) info usernet
+Hub 0 (user0):
+  Protocol[State]    FD  Source Address  Port   Dest. Address  Port RecvQ SendQ
+  TCP[HOST_FORWARD]  11    100.64.96.34    23        10.0.0.2    23     0     0
+(qemu)
+```
+
+- then you would just telnet to `100.64.96.34` if that were the IP address of the container itself.
+
 # Problems
 
 - Running on a Mac M1 at the moment doesn't work
