@@ -86,5 +86,4 @@ CMD qemu-system-sparc                                                           
  -netdev user,id=user0,net=${USER_NET},host=${USER_NET_GW}                                                        \
  -netdev hubport,hubid=0,id=port2,netdev=user0                                                                    \
  -vga ${GRAPHICS}                                                                                                 \
- -display                                                                                                         \
- vnc=${VNC_HOST}
+ -display vnc=${VNC_HOST}
