@@ -266,8 +266,207 @@ Creating and checking UFS file systems
 |                     |           |           |           |           |
           0          20          40          60          80         100
 
+...
+Solaris 2.6 software installation succeeded
+
+Customizing system files
+        - Mount points table (/etc/vfstab)
+        - Network host addresses (/etc/hosts)
+
+Customizing system devices
+        - Physical devices (/devices)
+fdintr: nobody sleeping (c0 0 0)
+fdintr: nobody sleeping (c0 0 0)
+        - Logical devices (/dev)
+
+Installing boot information
+        - Installing boot blocks (c0t0d0s0)
+
+Installation log location
+        - /a/var/sadm/system/logs/install_log (before reboot)
+        - /var/sadm/system/logs/install_log (after reboot)
+
+Installation complete
+Executing SolStart postinstall phase...
+Executing finish script "patch_finish"...
+
+Checking installed packages and patches...
+QEMU 5.2.0 monitor - type 'help' for more information
+(qemu) info registers
+pc: f00645b0  npc: f00645b4
+%g0-7: 00000000 ef6c5b2c 00000000 0000040d 000010e0 00000000 00000000 00000000
+%o0-7: 00050c18 00000000 00000003 0009a7f0 0009269c 00000003 efffe508 00025bec
+%l0-7: 04000081 ef6865a8 ef6865ac 00000000 00000000 0000040d 000010e0 ef6c5b2c
+%i0-7: 00094460 0005bfdc 00000000 0a000000 00000000 0004e6cc efffe260 ef686424
+%f00:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f08:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f16:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f24:  ffffffffffffffff ffffffffffffffff ffffffffffffffff 0000000000000000
+psr: 04400081 (icc: -Z-- SPE: S--) wim: 00000001
+fsr: 00000000 y: 00000000
+
+(qemu) info registers
+pc: 0002571c  npc: 00025720
+%g0-7: 00000000 0004d400 00000000 18655444 7a476a38 00000000 00000000 00000000
+%o0-7: 0009a7f0 00000001 00000001 000a35c8 00000000 00008024 efffe008 00025714
+%l0-7: 00000050 00000000 00000000 00000000 000a4cf8 00000000 00000000 00000000
+%i0-7: 0009b290 0004e6f4 0004d6a6 0004d660 000a35c8 00000000 efffe098 00024d50
+%f00:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f08:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f16:  ffffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffff
+%f24:  ffffffffffffffff ffffffffffffffff ffffffffffffffff 0000000000000000
+psr: 04400026 (icc: -Z-- SPE: --E) wim: 00000080
+fsr: 00000000 y: 00000000
+
+(qemu)
+Verifying sufficient filesystem capacity (dry run method)...
+Installing patch packages...
+Patch number 105570-01 has been successfully installed.
+See /a/var/sadm/patch/105570-01/log for details
+
+Patch packages installed:
+  SUNWrtvc
+  SUNWrtvcl
+
+Checking installed packages and patches...
+Verifying sufficient filesystem capacity (dry run method)...
+Installing patch packages...
+
+
+Patch number 105633-05 has been successfully installed.
+See /a/var/sadm/patch/105633-05/log for details
+
+Patch packages installed:
+  SUNWxwcft
+  SUNWxwfnt
+  SUNWxwplt
+  SUNWxwslb
+
+
+Checking installed packages and patches...
+Executing prepatch script...
+Verifying sufficient filesystem capacity (dry run method)...
+Installing patch packages...
+
+Patch number 105654-03 has been successfully installed.
+See /a/var/sadm/patch/105654-03/log for details
+
+Patch packages installed:
+  SUNWcsr
+
+
+Checking installed packages and patches...
+Executing prepatch script...
+Verifying sufficient filesystem capacity (dry run method)...
+Installing patch packages...
+...
+
+```
+
+This part just takes forever, why the disc shipped with patches RTM that weren't already applied is beyond me, but it needs to do it, and then it will auto-reboot:
+
+```
+Executing JumpStart postinstall phase...
+
+The begin script log 'begin.log'
+is located in /var/sadm/system/logs after reboot.
+
+The finish script log 'finish.log'
+is located in /var/sadm/system/logs after reboot.
+
+Mar 22 17:11:04 rpcbind: rpcbind terminating on signal.
+syncing file systems... done
+rebooting...
+rebooting ()
+Configuration device id QEMU version 1 machine id 32
+Probing SBus slot 0 offset 0
+Probing SBus slot 1 offset 0
+Probing SBus slot 2 offset 0
+Probing SBus slot 3 offset 0
+Probing SBus slot 4 offset 0
+Probing SBus slot 5 offset 0
+Invalid FCode start byte
+CPUs: 1 x FMI,MB86904
+UUID: 00000000-0000-0000-0000-000000000000
+Welcome to OpenBIOS v1.1 built on May 4 2022 19:50
+  Type 'help' for detailed information
+Trying disk:a...
+Not a bootable ELF image
+Loading a.out image...
+Loaded 7680 bytes
+entry point is 0x4000
+bootpath: /iommu@0,10000000/sbus@0,10001000/espdma@5,8400000/esp@5,8800000/sd@0,0:a
+switching to new context:
+SunOS Release 5.6 Version Generic_105181-05 [UNIX(R) System V Release 4.0]
+Copyright (c) 1983-1997, Sun Microsystems, Inc.
+Hostname: solaris
+Configuring the /devices directory
+fdintr: nobody sleeping (c0 0 0)
+fdintr: nobody sleeping (c0 0 0)
+Configuring the /dev directory
+Configuring the /dev directory (compatibility devices)
+The system is coming up.  Please wait.
+checking ufs filesystems
+/dev/rdsk/c0t0d0s1: is clean.
+/dev/rdsk/c0t0d0s5: is clean.
+/dev/rdsk/c0t0d0s7: is clean.
+Configuring network interface addresses: le0
+RPC: Timed out
+NIS domainname is localdomain
+...
+```
+
+and then after a bit you will be prompted to change the password: 
+```
+On this screen you can create a root password.
+
+A root password can contain any number of characters, but only the first eight
+characters in the password are significant. (For example, if you create
+`a1b2c3d4e5f6' as your root password, you can use `a1b2c3d4' to gain root
+access.)
+
+You will be prompted to type the root password twice; for security, the passwordwill not be displayed on the screen as you type it.
+
+> If you do not want a root password, press RETURN twice.
+
+Root password:
+
+
+Press Return to continue.
+```
+I set mine to `cheese`
+
+```
+System identification is completed.
+Setting netmask of le0 to 255.255.240.0
+Setting default interface for multicast: add net 224.0.0.0: gateway solaris
+syslog service starting.
+passwd.org_dir: Error in accessing NIS+ cold start file... is NIS+ installed?.
+group.org_dir: Error in accessing NIS+ cold start file... is NIS+ installed?.
+hosts.org_dir: Error in accessing NIS+ cold start file... is NIS+ installed?.
+Print services started.
+volume management starting.
+The system is ready.
+
+solaris console login: root
+Password:cheese
+Mar 22 20:14:54 solaris login: ROOT LOGIN /dev/console
+Sun Microsystems Inc.   SunOS 5.6       Generic August 1997
+# ifconfig -a
+lo0: flags=849<UP,LOOPBACK,RUNNING,MULTICAST> mtu 8232
+        inet 127.0.0.1 netmask ff000000
+le0: flags=863<UP,BROADCAST,NOTRAILERS,RUNNING,MULTICAST> mtu 1500
+        inet 10.0.0.2 netmask fffff000 broadcast 10.0.15.255
+        ether 52:54:0:12:34:56
+# ping 10.0.0.1
+10.0.0.1 is alive
+# route add default 10.0.0.1
+add net default: gateway 10.0.0.1
+# 4.2.2.1
+4.2.2.1 is alive
 ```
 
 # Problems
 
 - Running on a Mac M1 at the moment doesn't work
+
