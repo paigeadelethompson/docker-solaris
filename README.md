@@ -267,3 +267,7 @@ Creating and checking UFS file systems
           0          20          40          60          80         100
 
 ```
+
+# Problems
+
+- Running on a Mac M1 at the moment doesn't work
